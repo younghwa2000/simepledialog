@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 public class MainActivity extends Activity implements View.OnClickListener{
     String[] items=new String[]{"젤리빈","킷켓","롤리팝"};
-    //boolean checkArr= {false, true, false};
+    boolean[] checkArr= {false, true, false};
     Button but_dialog;
 
 
@@ -43,13 +43,22 @@ public class MainActivity extends Activity implements View.OnClickListener{
                 but.setText(items[which]);
             }
         });
+
         dialog.setIcon(R.drawable.sign);*/
-        dialog.setSingleChoiceItems(items, 0, new DialogInterface.OnClickListener() {
+       /* dialog.setSingleChoiceItems(items, 0, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 but_dialog.setText(items[which]);
             }
+        });*/
+
+        dialog.setMultiChoiceItems(items, checkArr,new DialogInterface.OnMultiChoiceClickListener(){
+            @Override
+            public void onClick(DialogInterface dialog,int which, boolean isChecked) {
+                but_dialog.setText(items[which]);
+            }
         });
+
         dialog.setPositiveButton("확인", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
